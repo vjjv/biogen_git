@@ -1,2 +1,1 @@
-# biogen_git
- Camera Kit Biogen
+# camera_kit_demo
