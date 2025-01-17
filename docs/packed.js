@@ -26031,17 +26031,14 @@ console.info(`SDK: ${environment_namespaceObject.l} \
 
     document.getElementById('canvas').replaceWith(session.output.live);
 
+    
+    //v2 go to https://my-lenses.snapchat.com -> lens scheduler to define group and lens to apply
     // const { lenses } = await cameraKit.lensRepository.loadLensGroups(['1c840cc0-bead-4a6d-8328-1fbe4a5ba67a']);
     const { lenses } = await cameraKit.lensRepository.loadLensGroups(['f7f4e367-f4b3-4de5-8e81-e9c842f2bf0b']);
     // session.applyLens(lenses[3]); 
     session.applyLens(lenses[0]); 
 
-    //v2 go to https://my-lenses.snapchat.com -> lens scheduler to define group and lens to apply
-    // const lens = await cameraKit.lensRepository.loadLens(
-    //     'f2510933-b9c3-49da-aeda-4c57fe0edd7e', //lens
-    //     'f7f4e367-f4b3-4de5-8e81-e9c842f2bf0b'  //group 
-    //   );
-    // await session.applyLens(lens)
+
 
 
 
