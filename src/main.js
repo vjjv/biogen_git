@@ -18,7 +18,7 @@ import {
     // const { lenses } = await cameraKit.lensRepository.loadLensGroups(['1c840cc0-bead-4a6d-8328-1fbe4a5ba67a']);
     const { lenses } = await cameraKit.lensRepository.loadLensGroups(['f7f4e367-f4b3-4de5-8e81-e9c842f2bf0b']);
     // session.applyLens(lenses[3]); 
-    session.applyLens(lenses[0]); 
+    session.applyLens(lenses[1]); 
 
 
 
