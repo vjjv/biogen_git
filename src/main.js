@@ -14,7 +14,7 @@ import {
     document.getElementById('canvas').replaceWith(session.output.live);
 
     // const { lenses } = await cameraKit.lensRepository.loadLensGroups(['1c840cc0-bead-4a6d-8328-1fbe4a5ba67a']);
-    const { lenses } = await cameraKit.lensRepository.loadLensGroups(['eeb85d39-2678-4915-9c14-2eb0a8c5b0d8']);
+    const { lenses } = await cameraKit.lensRepository.loadLensGroups(['bf816633-dd8b-45e8-9603-4a9859acdd52']);
 
     // session.applyLens(lenses[3]); 
     session.applyLens(lenses[0]); 
