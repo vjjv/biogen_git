@@ -12,6 +12,9 @@ import {
     //v1
     const session = await cameraKit.createSession();
     document.getElementById('canvas').replaceWith(session.output.live);
+    const canvas = document.querySelector('.canvas-part canvas');
+    canvas.style.display = 'block';
+    
     //v2
     // const canvas = document.getElementById('canvas');
     // const session = await cameraKit.createSession({ liveRenderTarget: canvas });
