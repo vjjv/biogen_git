@@ -308,7 +308,7 @@ function resetProgress() {
   // addHeart();
 
   // requestAnimationFrame(draw);
-}
+// }
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
