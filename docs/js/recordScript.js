@@ -320,7 +320,7 @@ function resizeCanvas() {
 // Initialize canvas size and start animation
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
-requestAnimationFrame(draw);
+// requestAnimationFrame(draw);
 
 // Heart management
 function addHeart() {
