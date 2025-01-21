@@ -266,48 +266,48 @@ function resetProgress() {
   document.querySelector(".outer-circle").style.stroke = "rgba(255,255,255,1)";
 }
 
-ctx.save();
+// ctx.save();
 // draw the linear gradient
-const linearGradient = ctx.createLinearGradient(0, 0, 0, canvas.height * 2);
-linearGradient.addColorStop(0, "rgb(52, 208, 235)");
-linearGradient.addColorStop(0.4, "rgb(222, 208, 200)");
-linearGradient.addColorStop(1, "rgb(48, 23, 221)");
+// const linearGradient = ctx.createLinearGradient(0, 0, 0, canvas.height * 2);
+// linearGradient.addColorStop(0, "rgb(52, 208, 235)");
+// linearGradient.addColorStop(0.4, "rgb(222, 208, 200)");
+// linearGradient.addColorStop(1, "rgb(48, 23, 221)");
 
-ctx.fillStyle = linearGradient;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+// ctx.fillStyle = linearGradient;
+// ctx.fillRect(0, 0, canvas.width, canvas.height);
 // Drawing and animation
-function draw(timestamp) {
-  const timeSinceLastRender = timestamp - lastRenderTime;
+// function draw(timestamp) {
+//   const timeSinceLastRender = timestamp - lastRenderTime;
 
-  if (timeSinceLastRender >= frameDuration) {
-    // Clear canvas
-    ctx.save();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = linearGradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    // Apply zoom and pan
-    ctx.setTransform(zoomFactor, 0, 0, zoomFactor, zoomOriginX, zoomOriginY);
+//   if (timeSinceLastRender >= frameDuration) {
+//     // Clear canvas
+//     ctx.save();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     ctx.fillStyle = linearGradient;
+//     ctx.fillRect(0, 0, canvas.width, canvas.height);
+//     // Apply zoom and pan
+//     ctx.setTransform(zoomFactor, 0, 0, zoomFactor, zoomOriginX, zoomOriginY);
 
-    // Draw text
-    ctx.font = `${40 * zoomFactor}px sans`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "white";
-    ctx.fillText("Hello world", 0, 0);
-    ctx.restore();
+//     // Draw text
+//     ctx.font = `${40 * zoomFactor}px sans`;
+//     ctx.textAlign = "center";
+//     ctx.textBaseline = "middle";
+//     ctx.fillStyle = "white";
+//     ctx.fillText("Hello world", 0, 0);
+//     ctx.restore();
 
-    // Update progress bar if recording
-    if (recording) {
-      updateProgress();
-    }
-    lastRenderTime = timestamp;
-  }
+//     // Update progress bar if recording
+//     if (recording) {
+//       updateProgress();
+//     }
+//     lastRenderTime = timestamp;
+//   }
 
   // Animate hearts
-  animateHearts();
-  addHeart();
+  // animateHearts();
+  // addHeart();
 
-  requestAnimationFrame(draw);
+  // requestAnimationFrame(draw);
 }
 
 function resizeCanvas() {
@@ -342,79 +342,79 @@ function addHeart() {
   hearts.push(heart);
 }
 
-function createPurpleGradient() {
-  const gradient = ctx.createRadialGradient(0, 0, 5, 0, 0, 20);
-  gradient.addColorStop(0, "rgba(128, 0, 128, 0.9)"); // Inner bright purple
-  gradient.addColorStop(1, "rgba(230, 230, 250, 0.8)"); // Outer lavender (slightly transparent)
-  return gradient;
-}
+// function createPurpleGradient() {
+//   const gradient = ctx.createRadialGradient(0, 0, 5, 0, 0, 20);
+//   gradient.addColorStop(0, "rgba(128, 0, 128, 0.9)"); // Inner bright purple
+//   gradient.addColorStop(1, "rgba(230, 230, 250, 0.8)"); // Outer lavender (slightly transparent)
+//   return gradient;
+// }
 
-function animateHearts() {
-  hearts.forEach((heart, index) => {
-    ctx.save();
-    ctx.globalAlpha = heart.opacity;
+// function animateHearts() {
+//   hearts.forEach((heart, index) => {
+//     ctx.save();
+//     ctx.globalAlpha = heart.opacity;
 
-    // Interpolate the glow intensity
-    if (heart.glow) {
-      heart.glowIntensity += heart.glowDirection * heart.glowSpeed;
+//     // Interpolate the glow intensity
+//     if (heart.glow) {
+//       heart.glowIntensity += heart.glowDirection * heart.glowSpeed;
 
-      // Reverse direction if it reaches the bounds (min: 5, max: 30)
-      if (heart.glowIntensity >= 30) {
-        heart.glowDirection = -1.5;
-      } else if (heart.glowIntensity <= 5) {
-        heart.glowDirection = 1;
-      }
+//       // Reverse direction if it reaches the bounds (min: 5, max: 30)
+//       if (heart.glowIntensity >= 30) {
+//         heart.glowDirection = -1.5;
+//       } else if (heart.glowIntensity <= 5) {
+//         heart.glowDirection = 1;
+//       }
 
-      // Apply the glow effect with interpolated intensity
-      ctx.shadowBlur = heart.glowIntensity;
-      ctx.shadowColor = "rgba(255, 0, 255, 0.8)";
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 0;
-    }
-    // adjusted the x and y coordination based on the user prefered zoom scale
-    const adjustedX = (heart.x - zoomOriginX) * zoomFactor + zoomOriginX;
-    const adjustedY = (heart.y - zoomOriginY) * zoomFactor + zoomOriginY;
+//       // Apply the glow effect with interpolated intensity
+//       ctx.shadowBlur = heart.glowIntensity;
+//       ctx.shadowColor = "rgba(255, 0, 255, 0.8)";
+//       ctx.shadowOffsetX = 0;
+//       ctx.shadowOffsetY = 0;
+//     }
+//     // adjusted the x and y coordination based on the user prefered zoom scale
+//     const adjustedX = (heart.x - zoomOriginX) * zoomFactor + zoomOriginX;
+//     const adjustedY = (heart.y - zoomOriginY) * zoomFactor + zoomOriginY;
 
-    ctx.translate(adjustedX, adjustedY);
-    //based on glow intensity, change the fill color
-    ctx.fillStyle =
-      heart.glowIntensity > 10
-        ? heart.gradient
-        : heart.gradient.addColorStop(heart.glowIntensity / 30, "white") ||
-          "rgba(255, 255, 255, 0.2)";
+//     ctx.translate(adjustedX, adjustedY);
+//     //based on glow intensity, change the fill color
+//     ctx.fillStyle =
+//       heart.glowIntensity > 10
+//         ? heart.gradient
+//         : heart.gradient.addColorStop(heart.glowIntensity / 30, "white") ||
+//           "rgba(255, 255, 255, 0.2)";
 
-    // Draw the heart shape
-    drawHeart(ctx, 0, 0, heart.size);
+//     // Draw the heart shape
+//     drawHeart(ctx, 0, 0, heart.size);
 
-    ctx.restore();
+//     ctx.restore();
 
-    // Move the heart upwards
-    heart.y -= heart.speed;
+//     // Move the heart upwards
+//     heart.y -= heart.speed;
 
-    // Remove hearts that are out of bounds
-    if (heart.y + heart.size < 0) {
-      hearts.splice(index, 1);
-    }
-  });
-}
+//     // Remove hearts that are out of bounds
+//     if (heart.y + heart.size < 0) {
+//       hearts.splice(index, 1);
+//     }
+//   });
+// }
 
-function drawHeart(ctx, x, y, size) {
-  ctx.beginPath();
-  ctx.moveTo(x, y + size / 4);
-  ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + size / 4);
-  ctx.bezierCurveTo(x - size / 2, y + size / 2, x, y + size / 2, x, y + size);
-  ctx.bezierCurveTo(
-    x,
-    y + size / 2,
-    x + size / 2,
-    y + size / 2,
-    x + size / 2,
-    y + size / 4
-  );
-  ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + size / 4);
-  ctx.closePath();
-  ctx.fill();
-}
+// function drawHeart(ctx, x, y, size) {
+//   ctx.beginPath();
+//   ctx.moveTo(x, y + size / 4);
+//   ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + size / 4);
+//   ctx.bezierCurveTo(x - size / 2, y + size / 2, x, y + size / 2, x, y + size);
+//   ctx.bezierCurveTo(
+//     x,
+//     y + size / 2,
+//     x + size / 2,
+//     y + size / 2,
+//     x + size / 2,
+//     y + size / 4
+//   );
+//   ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + size / 4);
+//   ctx.closePath();
+//   ctx.fill();
+// }
 
 // Touch events for pinch-to-zoom
 canvas.addEventListener(
